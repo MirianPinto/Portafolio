@@ -1,4 +1,4 @@
-class AddInitialProjectsToProyects < ActiveRecord::Migration[7.1]
+class Proyects < ActiveRecord::Migration[7.1]
   def up
     Proyect.create([
       { title: "Hotel Reservation Management System", description: "This project involved the creation of a system for managing reservations and room statuses for a hotel. It allows for the efficient control of room statuses, categorized as Available, Dirty, Occupied, and Rented. Each status depends on the reservations made and is automatically updated based on the reservation's check-out time." },
@@ -10,7 +10,4 @@ class AddInitialProjectsToProyects < ActiveRecord::Migration[7.1]
     ])
   end
 
-  def down
-    Proyect.where(title: ["Hotel Reservation Management System", "Administrative Portal for Managing Psychology Patient Appointments", "Mini Pascal Compiler", "Virtual File System", "Mini LPP Compiler", "Currency Conversion API Against the Dollar"]).delete_all
-  end
 end
