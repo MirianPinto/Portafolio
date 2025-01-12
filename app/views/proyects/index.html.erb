@@ -1,14 +1,113 @@
-<p style="color: green"><%= notice %></p>
+<div class="position-relative text-center" style="height: 100vh; overflow: hidden;">
+  <!-- Imagen de fondo -->
+  <img src="/assets/fondo_grande.jpg" alt="Background" class="w-100 h-100 object-fit-cover">
 
-<h1>Proyects</h1>
+  <!-- Título centrado -->
+  <h1 class="position-absolute top-50 start-50 translate-middle text-white bg-dark p-3 rounded">
+    Hi, I am Mirian
+  </h1>
 
-<div id="proyects">
-  <% @proyects.each do |proyect| %>
-    <%= render proyect %>
-    <p>
-      <%= link_to "Show this proyect", proyect %>
-    </p>
-  <% end %>
+  <!-- Botones en la parte inferior -->
+  <div class="position-absolute w-100" style="bottom: 20px;">
+    <a href="#AboutMe" class="btn btn-primary mx-3">
+      About Me
+    </a>
+    <a href="#proyects" class="btn btn-primary mx-3">
+      Go to Projects
+    </a>
+  </div>
 </div>
+
+<div id="AboutMe" class="container mt-5">
+  <h1 class="text-center mb-4">About Me</h1>
+  <div class="row align-items-center">
+    <!-- Texto a la izquierda -->
+    <div class="col-md-6">
+      <p>
+        Hi, I'm Mirian! I am passionate about [brief description of your interests or profession].
+        My goal is to [describe your mission or vision]. I love working on challenging projects
+        and collaborating with others to create impactful solutions.
+      </p>
+      <p>
+        When I'm not working, you can find me [list hobbies or interests]. Feel free to explore
+        my projects and get in touch!
+      </p>
+    </div>
+
+    <!-- Foto a la derecha -->
+    <div class="col-md-6 text-center">
+      <img src="/assets/Mirian.png" alt="Photo of Mirian" class="img-fluid" style="max-width: 300px; border: 2px solid #000;">>
+    </div>
+  </div>
+</div>
+
+
+<h1 id="proyects" class="text-center mt-5">Proyects</h1>
+
+
+<div class="container mt-5">
+  <div class="row">
+    <% @proyects.each_with_index do |proyect, index| %>
+      <div class="col-12 mb-4 d-flex flex-wrap align-items-center">
+        <% if index.even? %>
+          <!-- Card a la izquierda, imagen a la derecha -->
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><%= proyect.title %></h5>
+                <p class="card-text"><%= truncate(proyect.description, length: 100) %></p>
+                <%= link_to "Show this project", proyect, class: "btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img src="/assets/fondo.jpeg" alt="<%= proyect.title %>" class="img-fluid rounded" style="width: 300px; height: 200px; object-fit: cover;">
+          </div>
+        <% else %>
+          <!-- Imagen a la izquierda, card a la derecha -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img src="/assets/fondo.jpeg" alt="<%= proyect.title %>" class="img-fluid rounded" style="width: 300px; height: 200px; object-fit: cover;">
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><%= proyect.title %></h5>
+                <p class="card-text"><%= truncate(proyect.description, length: 100) %></p>
+                <%= link_to "Show this project", proyect, class: "btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<h1 class="text-center mt-5">Contact</h1>
+<div class="container text-center mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Email:</strong> 
+          <a href="mailto:mirianpw1@gmail.com">mirianpw1@gmail.com</a>
+        </li>
+        <li class="list-group-item">
+          <strong>LinkedIn:</strong> 
+          <a href="https://www.linkedin.com/in/mirian-pinto-389582253/" target="_blank">linkedin.com/in/mirian-pinto</a>
+        </li>
+        <li class="list-group-item">
+          <strong>Phone:</strong> +504 99165634
+        </li>
+        <li class="list-group-item">
+          <strong>GitHub:</strong> 
+          <a href="https://github.com/MirianPinto" target="_blank">github.com/MirianPinto</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 
 <%= link_to "New proyect", new_proyect_path %>
