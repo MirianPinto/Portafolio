@@ -67,4 +67,6 @@ class ProyectsController < ApplicationController
     def proyect_params
       params.require(:proyect).permit(:title, :description)
     end
+
+    
 end

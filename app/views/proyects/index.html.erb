@@ -1,40 +1,36 @@
 <div class="position-relative text-center" style="height: 100vh; overflow: hidden;">
   <!-- Imagen de fondo -->
-  
-  <%= image_tag "fondo_grande.jpg", alt: "Background", class: "w-100 h-100 object-fit-cover" %>
-
+ <%= image_tag "fondo_grande.jpg", alt: "Background", class: "object-fit-cover", style: "width: 80%; height: 100%;" %>
 
   <!-- Título centrado -->
   <h1 class="position-absolute top-50 start-50 translate-middle text-white bg-dark p-3 rounded">
-    Hi, I am Mirian
+    Hi!, I'm Mirian 
   </h1>
 
   <!-- Botones en la parte inferior -->
   <div class="position-absolute w-100" style="bottom: 20px;">
-    <a href="#AboutMe" class="btn btn-primary mx-3">
-      About Me
-    </a>
-    <a href="#proyects" class="btn btn-primary mx-3">
-      Projects
-    </a>
+    
+    <a href="#AboutMe" class="btn btn-dark mx-3" style="width: 150px;">About Me</a>
+    <a href="#proyects" class="btn btn-dark mx-3" style="width: 150px;">Projects</a>
   </div>
 </div>
 
 <div id="AboutMe" class="container mt-5">
-  <h1 class="text-center mb-4">About Me</h1>
+  <h1 class="text-center">About Me</h1>
+  <div class="mx-auto mb-4" style="width: 100px; height: 4px; background-color: #000;"></div>
   <div class="row align-items-center">
     <!-- Texto a la izquierda -->
     <div class="col-md-6">
-      <p>
-        Hi, I'm Mirian! I am passionate about [brief description of your interests or profession].
-        My goal is to [describe your mission or vision]. I love working on challenging projects
-        and collaborating with others to create impactful solutions.
+      <p style="text-align: justify;">
+        Hi, I'm Mirian. I am passionate about programming and software development, especially creating innovative web applications and efficient technological solutions.
+        My goal is to build robust systems that improve people's lives and optimize business processes. 
+        I love working on challenging projects, learning new technologies, and collaborating with multidisciplinary teams to achieve impactful solutions.
       </p>
-      <p>
-        When I'm not working, you can find me [list hobbies or interests]. Feel free to explore
-        my projects and get in touch!
+      <p style="text-align: justify;">
+        When I'm not working, you can find me drawing or working on personal projects. Feel free to explore my projects and get in touch!
       </p>
     </div>
+
 
     <!-- Foto a la derecha -->
     <div class="col-md-6 text-center">
@@ -44,37 +40,122 @@
 </div>
 
 
-<h1 id="proyects" class="text-center mt-5">Proyects</h1>
-
+<h1 id="proyects" class="text-center mt-5">Projects</h1>
+<div class="mx-auto" style="width: 100px; height: 4px; background-color: #000;"></div>
 
 <div class="container mt-5">
   <div class="row">
     <% @proyects.each_with_index do |proyect, index| %>
-      <div class="col-12 mb-4 d-flex flex-wrap align-items-center">
+    
+      <div class="col-12 mb-4 mt-4 d-flex flex-wrap align-items-center">
         <% if index.even? %>
-          <!-- Card a la izquierda, imagen a la derecha -->
+          <!-- Card a la izquierda, carrusel a la derecha -->
           <div class="col-md-6">
             <div class="card h-100">
               <div class="card-body">
                 <h5 class="card-title"><%= proyect.title %></h5>
-                <p class="card-text"><%= truncate(proyect.description, length: 100) %></p>
+                <p class="card-text" style="text-align: justify;"><%= proyect.description %></p>
                 <%= link_to "Show this project", proyect, class: "btn btn-primary" %>
               </div>
             </div>
           </div>
           <div class="col-md-6 d-flex justify-content-center align-items-center">
-            <%= image_tag "fondo_grande.jpg", alt: proyect.title, class: "img-fluid rounded", style:"width: 300px; height: 200px; object-fit: cover;" %>
+            <div id="carousel-<%= index %>" class="carousel slide" data-bs-ride="carousel" style="width: 400px; height: 200px;">
+              <!-- Indicadores -->
+              <% if proyect.title == "Hotel Reservation Management System"%>
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+              <%end%>
+              <!-- Imágenes -->
+              <div class="carousel-inner">
+                <% if proyect.title == "Hotel Reservation Management System"%>
+                  <div class="carousel-item active">
+                    <%= image_tag "home_hotel.png", alt: "Image 1 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                  </div>
+                  <div class="carousel-item">
+                    <%= image_tag "login_hotel.png", alt: "Image 2 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                  </div>
+                  <div class="carousel-item">
+                    <%= image_tag "reservation_hotel.png", alt: "Image 3 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                  </div>
+                  <!-- Controles -->
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                <%end%>
+                <% if proyect.title == "Administrative Portal for Managing Psychology Patient Appointments"%>
+                   <div class="carousel-item active">
+                    <%= image_tag "home_hotel.png", alt: "Image 1 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                  </div>
+                <%end%>
+                <% if proyect.title == "Mini LPP Compiler"%>
+                   <div class="carousel-item active">
+                    <%= image_tag "minilpp.png", alt: "Image 1 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                  </div>
+                <%end%>
+              </div>
+            </div>
           </div>
         <% else %>
-          <!-- Imagen a la izquierda, card a la derecha -->
+          <!-- Carrusel a la izquierda, card a la derecha -->
           <div class="col-md-6 d-flex justify-content-center align-items-center">
-            <%= image_tag "fondo_grande.jpg", alt: proyect.title, class: "img-fluid rounded", style:"width: 300px; height: 200px; object-fit: cover;" %>
+            <div id="carousel-<%= index %>" class="carousel slide" data-bs-ride="carousel" style="width: 400px; height: 200px;">
+              <!-- Indicadores -->
+              <% if proyect.title == "Mini Pascal Compiler"%>
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide-to="1" aria-label="Slide 2"></button>\
+                </div>
+              <%end%>
+              <!-- Imágenes -->
+              <div class="carousel-inner">
+                <% if proyect.title == "Currency Conversion API Against the Dollar"%>
+                  <div class="carousel-item active">
+                    <%= image_tag "api.png", alt: "Image 1 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                  </div>
+                 
+                <%end%>
+                <% if proyect.title == "Virtual File System"%>
+                   <div class="carousel-item active">
+                    <%= image_tag "virtual.png", alt: "Image 1 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                  </div>
+                <%end%>
+                <% if proyect.title == "Mini Pascal Compiler"%>
+                  <div class="carousel-item active">
+                    <%= image_tag "minipascal.png", alt: "Image 1 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                  </div>
+                  <div class="carousel-item">
+                    <%= image_tag "minipascal2.png", alt: "Image 2 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                  </div>
+                <%end%>
+              </div>
+
+              <% if proyect.title == "Mini Pascal Compiler"%>
+               <!-- Controles -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              <%end%>
+            </div>
           </div>
           <div class="col-md-6">
             <div class="card h-100">
               <div class="card-body">
                 <h5 class="card-title"><%= proyect.title %></h5>
-                <p class="card-text"><%= truncate(proyect.description, length: 100) %></p>
+                <p class="card-text" style="text-align: justify;"><%= proyect.description %></p>
                 <%= link_to "Show this project", proyect, class: "btn btn-primary" %>
               </div>
             </div>
@@ -86,7 +167,10 @@
 </div>
 
 
+
 <h1 class="text-center mt-5">Contact</h1>
+<div class="mx-auto" style="width: 100px; height: 4px; background-color: #000;"></div>
+
 <div class="container text-center mt-4">
   <div class="row justify-content-center">
     <div class="col-md-6">
@@ -113,3 +197,8 @@
 
 
 <%= link_to "New proyect", new_proyect_path %>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Bundle with Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
