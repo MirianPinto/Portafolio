@@ -10,4 +10,7 @@ class Proyects < ActiveRecord::Migration[7.1]
     ])
   end
 
+  def down
+    Proyect.where(title: ["Hotel Reservation Management System", "Administrative Portal for Managing Psychology Patient Appointments", "Mini Pascal Compiler", "Virtual File System", "Mini LPP Compiler", "Currency Conversion API Against the Dollar"]).delete_all
+  end
 end
