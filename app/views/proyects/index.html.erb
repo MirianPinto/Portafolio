@@ -1,6 +1,8 @@
 <div class="position-relative text-center" style="height: 100vh; overflow: hidden;">
   <!-- Imagen de fondo -->
-  <img src="/assets/fondo_grande.jpg" alt="Background" class="w-100 h-100 object-fit-cover">
+  
+  <%= image_tag "fondo_grande.jpg", alt: "Background", class: "w-100 h-100 object-fit-cover" %>
+
 
   <!-- Título centrado -->
   <h1 class="position-absolute top-50 start-50 translate-middle text-white bg-dark p-3 rounded">
@@ -13,7 +15,7 @@
       About Me
     </a>
     <a href="#proyects" class="btn btn-primary mx-3">
-      Go to Projects
+      Projects
     </a>
   </div>
 </div>
@@ -36,7 +38,7 @@
 
     <!-- Foto a la derecha -->
     <div class="col-md-6 text-center">
-      <img src="/assets/Mirian.png" alt="Photo of Mirian" class="img-fluid" style="max-width: 300px; border: 2px solid #000;">>
+      <%= image_tag "Mirian.png", alt: "Photo of Mirian", class: "img-fluid rounded", style:"max-width: 300px; border: 2px solid #000;" %>
     </div>
   </div>
 </div>
@@ -61,12 +63,12 @@
             </div>
           </div>
           <div class="col-md-6 d-flex justify-content-center align-items-center">
-            <img src="/assets/fondo.jpeg" alt="<%= proyect.title %>" class="img-fluid rounded" style="width: 300px; height: 200px; object-fit: cover;">
+            <%= image_tag "fondo_grande.jpg", alt: proyect.title, class: "img-fluid rounded", style:"width: 300px; height: 200px; object-fit: cover;" %>
           </div>
         <% else %>
           <!-- Imagen a la izquierda, card a la derecha -->
           <div class="col-md-6 d-flex justify-content-center align-items-center">
-            <img src="/assets/fondo.jpeg" alt="<%= proyect.title %>" class="img-fluid rounded" style="width: 300px; height: 200px; object-fit: cover;">
+            <%= image_tag "fondo_grande.jpg", alt: proyect.title, class: "img-fluid rounded", style:"width: 300px; height: 200px; object-fit: cover;" %>
           </div>
           <div class="col-md-6">
             <div class="card h-100">
