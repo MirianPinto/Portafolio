@@ -69,6 +69,15 @@
                     <button type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide-to="2" aria-label="Slide 3"></button>
                   </div>
                 <%end%>
+
+                <% if proyect.title == "Hotel Reservation Management System"%>
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide-to="4" aria-label="Slide 4"></button>
+                  </div>
+                <%end%>
                 <!-- Imágenes -->
                 <div class="carousel-inner">
                   <% if proyect.title == "Hotel Reservation Management System"%>
@@ -93,8 +102,25 @@
                   <%end%>
                   <% if proyect.title == "Administrative Portal for Managing Psychology Patient Appointments"%>
                     <div class="carousel-item active">
-                      <%= image_tag "home_hotel.png", alt: "Image 1 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                      <%= image_tag "admin.jpeg", alt: "Image 1 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
                     </div>
+                    <div class="carousel-item">
+                      <%= image_tag "admin2.jpeg", alt: "Image 2 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                    </div>
+                    <div class="carousel-item">
+                      <%= image_tag "admin3.jpeg", alt: "Image 3 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                    </div>
+                    <div class="carousel-item">
+                      <%= image_tag "admin4.jpeg", alt: "Image 4 for #{proyect.title}", class: "d-block w-100", style: "height: 200px; object-fit: cover;" %>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel-<%= index %>" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
                   <%end%>
                   <% if proyect.title == "Mini LPP Compiler"%>
                     <div class="carousel-item active">
